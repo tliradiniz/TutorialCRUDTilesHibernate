@@ -6,6 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /*
  * This is our model class and it corresponds to Country table in database
@@ -19,6 +27,7 @@ public class Country{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	
+	@NotEmpty
 	@Column(name="countryName")
 	String countryName;	
 	
@@ -28,7 +37,7 @@ public class Country{
 	public Country() {
 		super();
 	}
-	public Country(int i, String countryName,long population) {
+	public Country(int i, String countryName, long population) {
 		super();
 		this.id = i;
 		this.countryName = countryName;

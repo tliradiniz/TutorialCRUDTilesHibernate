@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
@@ -18,6 +20,15 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	/**
      * Configure TilesConfigurer.
      */
+	@Bean
+	   public InternalResourceViewResolver resolver() {
+	      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+	      resolver.setViewClass(JstlView.class);
+	      resolver.setPrefix("/WEB-INF/views/tiles/layouts");
+	      resolver.setSuffix(".jsp");
+	      return resolver;
+	}
+	
 	@Bean
 	public TilesConfigurer tilesConfigurer(){
 	    TilesConfigurer tilesConfigurer = new TilesConfigurer();
